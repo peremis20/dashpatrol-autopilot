@@ -100,7 +100,7 @@ const routes: Record<string, Handler> = {
  */
 const HOME_TEXT = `<main style="min-height:100vh;margin:0;background:#06341A;color:#fff;font:16px/1.6 Outfit,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;padding:32px 16px;box-sizing:border-box">
 <div style="max-width:620px;text-align:center">
-<p style="margin:0 0 18px;font:800 26px 'Outfit',system-ui,sans-serif;display:inline-flex;align-items:center;gap:10px"><span style="display:inline-flex;width:34px;height:34px;border-radius:9px;background:#3DCB5A;color:#0B3B22;align-items:center;justify-content:center">D</span>DashPatrol</p>
+<p style="margin:0 0 18px;font:800 26px 'Outfit',system-ui,sans-serif;display:inline-flex;align-items:center;gap:10px"><span style="display:inline-flex;width:34px;height:34px;border-radius:9px;background:#8fe33b;color:#06341a;align-items:center;justify-content:center">D</span>DashPatrol</p>
 <h1 style="margin:0;font:800 clamp(30px,5vw,44px)/1.1 'Outfit',system-ui,sans-serif">Grow your business on <span style="color:#A6F04F">autopilot.</span></h1>
 <p style="color:rgba(255,255,255,.85)">DashPatrol helps your website rank on Google and turn that traffic into sales. It reads your Search Console (read only) and Analytics (read only) to choose which pages to improve and to measure every change. Only when you click Set it up for me does it verify your site, add it and its sitemap to Search Console and create an Analytics property. Your data is used only for your own site, never sold, shared or used for ads.</p>
 <p style="color:rgba(255,255,255,.7);font-size:14px">Loading DashPatrol&hellip;</p>

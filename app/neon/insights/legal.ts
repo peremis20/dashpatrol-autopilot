@@ -1,4 +1,4 @@
-import { CHROME_CSS, homeOf, landingHtml, siteFooter, siteNav } from "./landing";
+import { CHROME_CSS, fontFace, homeOf, landingHtml, siteFooter, siteNav } from "./landing";
 /**
  * The privacy policy and terms, served at /privacy and /terms. Plain words, describing only what the app really
  * does. The contact address comes from SUPPORT_EMAIL, or else the first platform owner in ADMIN_EMAILS.
@@ -12,19 +12,18 @@ const page = (title: string, body: string) => {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title}</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700&display=swap">
+<style>${fontFace()}</style>
 <style>
-:root{--ink:#0E2A1A;--muted:#5C6660;--bg:#F5FAF6;--card:#FFFFFF;--line:#DDE9E0;--accent:#17703A}
+:root{--ink:#0b1f12;--muted:#5C6660;--bg:#f4faf1;--card:#FFFFFF;--line:#e1eedc;--accent:#0f6b2f}
 @media (prefers-color-scheme: dark){:root{--ink:#E8F2EA;--muted:#A7B8AC;--bg:#0F1712;--card:#16211A;--line:#24352A;--accent:#5BB884}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 Inter,system-ui,sans-serif}
-.hero{background:linear-gradient(160deg,#0A3520,#0F5A32);color:#fff;padding:56px 0 64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 Outfit,system-ui,sans-serif}
+.hero{background:linear-gradient(160deg,#06341a,#0f6b2f);color:#fff;padding:56px 0 64px}
 .hero .in{max-width:820px;margin:0 auto;padding:0 20px}
-.hero h1{font-family:"Plus Jakarta Sans",Inter,sans-serif;font-weight:800;font-size:clamp(32px,5vw,48px);margin:0;letter-spacing:-.02em}
-.hero small{color:#C6F432;font-weight:600}
+.hero h1{font-family:Outfit,system-ui,sans-serif;font-weight:800;font-size:clamp(32px,5vw,48px);margin:0;letter-spacing:-.02em}
+.hero small{color:#a6f04f;font-weight:600}
 main{max-width:820px;margin:-32px auto 64px;padding:32px 28px;background:var(--card);border:1px solid var(--line);border-radius:22px;position:relative}
-main h2{font-family:"Plus Jakarta Sans",Inter,sans-serif;font-weight:800;font-size:20px;margin:28px 0 6px}
+main h2{font-family:Outfit,system-ui,sans-serif;font-weight:800;font-size:20px;margin:28px 0 6px}
 main h2:first-child{margin-top:0}
 main p,main li{color:var(--ink)}main a{color:var(--accent)}
 @media (max-width:860px){main{margin:-32px 16px 48px;padding:24px 18px}}
