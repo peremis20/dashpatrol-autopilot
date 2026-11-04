@@ -14,7 +14,7 @@
       const price = annual ? Math.round(m * 0.8) : m;
       plan.querySelector('.plan__amount').textContent = '$' + price;
       if (!plan.hasAttribute('data-popular')) {
-        plan.querySelector('.plan__note').textContent = annual ? 'Billed yearly, $' + (price * 12).toLocaleString('en-US') + '/yr' : 'Billed monthly';
+        plan.querySelector('.plan__note').textContent = 'Planned price after early access';
       }
     });
   }

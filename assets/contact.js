@@ -1,4 +1,4 @@
-// Contact: validated, simulated message form (no network)
+// Contact: validated message form, saves to the Neon contact function
 (() => {
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const form = document.getElementById('contact-form');
@@ -33,15 +33,25 @@
     if (!EMAIL_RE.test(em)) return setErr('Please enter a valid email address.', email);
     if (msg.value.trim().length < 10) return setErr('Please write a short message (10+ characters).', msg);
     setLoading(true);
-    timer = setTimeout(() => {
-      timer = null;
-      setLoading(false);
-      $('sent-name').textContent = n.split(/\s+/)[0] || 'there';
-      $('sent-email').textContent = em;
-      form.hidden = true;
-      sent.hidden = false;
-      sent.querySelector('h2').focus();
-    }, 900);
+    timer = true;
+    const hp = form.querySelector('[name="website"]');
+    const body = new URLSearchParams({ name: n, email: em, topic: topic.value, msg: msg.value.trim(), website: hp ? hp.value : '' });
+    fetch('https://br-weathered-mouse-b5ymo8mn-contact.compute.c-7.us-east-2.aws.neon.tech/', { method: 'POST', body })
+      .then((r) => r.json().then((j) => { if (!r.ok || !j.ok) throw new Error('send'); }))
+      .then(() => {
+        timer = null;
+        setLoading(false);
+        $('sent-name').textContent = n.split(/\s+/)[0] || 'there';
+        $('sent-email').textContent = em;
+        form.hidden = true;
+        sent.hidden = false;
+        sent.querySelector('h2').focus();
+      })
+      .catch(() => {
+        timer = null;
+        setLoading(false);
+        setErr('Sorry, your message could not be sent. Please email hello@dashpatrol.io.');
+      });
   });
 
   $('contact-again').addEventListener('click', () => {
