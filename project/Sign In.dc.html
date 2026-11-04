@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Sign In — DashPatrol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>@view-transition{navigation:auto}html{background:#06341a}*{box-sizing:border-box}body{margin:0;font-family:'Outfit',system-ui,sans-serif;color:#0b1f12;background:#06341a;-webkit-font-smoothing:antialiased}a{color:#1f8a3b;text-decoration:none}a:hover{color:#0f6b2f}</style>
+</helmet>
+<dc-import name="Nav" active="signin" hint-size="100%,62px"></dc-import>
+<section style="background:radial-gradient(900px 600px at 15% 30%,#15893e 0%,transparent 60%),linear-gradient(180deg,#06341a,#0a4a24);padding:56px 32px 72px">
+  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:center">
+    <div style="color:#fff;display:flex;flex-direction:column;gap:20px">
+      <h1 style="margin:0;font-size:clamp(40px,5vw,62px);line-height:1.03;font-weight:800;letter-spacing:-0.025em">Your SEO team kept <span style="color:#a6f04f;font-style:italic">working.</span></h1>
+      <p style="margin:0;font-size:18px;line-height:1.55;color:rgba(255,255,255,0.88);max-width:480px">Sign in to see what DashPatrol did for your site this week.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:440px">
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);font-size:15px"><svg width="16" height="16" viewBox="0 0 14 14" style="flex-shrink:0;vertical-align:-2px"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#a6f04f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="flex:1">Fixed 3 broken links</span><span style="font-size:13px;opacity:0.7">Today</span></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);font-size:15px"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M4 18 L10 12 L13 15 L20 7" fill="none" stroke="#a6f04f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 6 H20 V11" fill="none" stroke="#a6f04f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="flex:1">Moved up 6 spots for a search</span><span style="font-size:13px;opacity:0.7">Today</span></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);font-size:15px"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5" fill="none" stroke="#a6f04f" stroke-width="2.2"></rect><path d="M8.5 8 H15.5 M8.5 12 H15.5 M8.5 16 H12.5" stroke="#a6f04f" stroke-width="2" stroke-linecap="round"></path></svg><span style="flex:1">2 articles waiting for your approval</span><span style="font-size:13px;opacity:0.7">New</span></div>
+      </div>
+    </div>
+    <div style="padding:34px;border-radius:22px;background:linear-gradient(180deg,#ffffff,#f3faef);box-shadow:0 0 0 6px rgba(255,255,255,0.18),0 40px 80px rgba(0,0,0,0.35)">
+      <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:30px 0">
+          <span style="width:76px;height:76px;border-radius:50%;background:linear-gradient(180deg,#2fa83e,#0f6b2f);display:grid;place-items:center"><svg width="38" height="38" viewBox="0 0 14 14" style="flex-shrink:0;vertical-align:-2px"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#c8f59a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+          <h2 style="margin:0;font-size:28px;font-weight:800">You're signed in</h2>
+          <p style="margin:0;font-size:16px;color:#33433a">Welcome back, {{ email }}.</p>
+          <a href="Home.dc.html" style="padding:14px 28px;border-radius:12px;background:#0f6b2f;color:#fff;font-size:16px;font-weight:700;text-decoration:none">Go to homepage →</a>
+          <button onClick="{{ reset }}" style="border:none;background:none;color:#1f8a3b;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer">Sign out</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:16px">
+          <div><h2 style="margin:0 0 6px;font-size:28px;font-weight:800;letter-spacing:-0.01em">Sign in to DashPatrol</h2><p style="margin:0;font-size:15px;color:#33433a">New here? <a href="Start%20Free%20Trial.dc.html" style="color:#1f8a3b;font-weight:700">Start your free trial</a></p></div>
+          <button type="button" onClick="{{ google }}" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:13px;border-radius:12px;border:1.5px solid #d6e5d1;background:#fff;font-family:inherit;font-size:15px;font-weight:600;color:#0b1f12;cursor:pointer"><svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.850-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path></svg>Continue with Google</button>
+          <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:#7a887f"><span style="flex:1;height:1px;background:#dcebd6"></span>or with email<span style="flex:1;height:1px;background:#dcebd6"></span></div>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Email
+            <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="you@business.com" style="padding:13px 14px;border-radius:12px;border:1.5px solid {{ emailBorder }};background:#fff;font-family:inherit;font-size:16px;outline:none;color:#0b1f12">
+            <span style="font-size:13px;font-weight:500;color:#c0392b">{{ emailErr }}</span>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600"><span style="display:flex;justify-content:space-between">Password<a href="Forgot%20Password.dc.html" style="font-weight:600;color:#1f8a3b">Forgot?</a></span>
+            <span style="display:flex;align-items:center;border-radius:12px;border:1.5px solid {{ pwBorder }};background:#fff">
+              <input type="{{ pwType }}" value="{{ pw }}" onChange="{{ onPw }}" placeholder="At least 6 characters" style="flex:1;min-width:0;padding:13px 14px;border:none;border-radius:12px;font-family:inherit;font-size:16px;outline:none;background:transparent;color:#0b1f12">
+              <button type="button" onClick="{{ toggleShow }}" style="border:none;background:none;padding:0 14px;color:#1f8a3b;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer">{{ showLabel }}</button>
+            </span>
+            <span style="font-size:13px;font-weight:500;color:#c0392b">{{ pwErr }}</span>
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer"><input type="checkbox" checked="{{ remember }}" onChange="{{ toggleRemember }}" style="width:18px;height:18px;accent-color:#1f8a3b">Keep me signed in</label>
+          <button type="submit" style="padding:15px;border-radius:12px;border:none;background:linear-gradient(180deg,#1f7a39,#0f5a28);color:#fff;font-family:inherit;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 10px 24px rgba(15,90,40,0.3)">{{ submitLabel }}</button>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+</section>
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { email: '', pw: '', show: false, remember: true, errs: {}, loading: false, done: false };
+  submit = (e) => {
+    e && e.preventDefault();
+    const { email, pw } = this.state;
+    const errs = {};
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = 'Enter a valid email address.';
+    if (pw.length < 6) errs.pw = 'Password must be at least 6 characters.';
+    this.setState({ errs });
+    if (Object.keys(errs).length) return;
+    this.setState({ loading: true });
+    setTimeout(() => this.setState({ loading: false, done: true }), 900);
+  };
+  renderVals() {
+    const s = this.state;
+    return {
+      ...s, notDone: !s.done,
+      emailErr: s.errs.email || '', pwErr: s.errs.pw || '',
+      emailBorder: s.errs.email ? '#e07a6c' : '#d6e5d1', pwBorder: s.errs.pw ? '#e07a6c' : '#d6e5d1',
+      pwType: s.show ? 'text' : 'password', showLabel: s.show ? 'Hide' : 'Show',
+      submitLabel: s.loading ? 'Signing in…' : 'Sign In →',
+      onEmail: e => this.setState({ email: e.target.value, errs: { ...s.errs, email: '' } }),
+      onPw: e => this.setState({ pw: e.target.value, errs: { ...s.errs, pw: '' } }),
+      toggleShow: () => this.setState({ show: !s.show }),
+      toggleRemember: () => this.setState({ remember: !s.remember }),
+      google: () => this.setState({ email: s.email || 'owner@gmail.com', loading: true }, () => setTimeout(() => this.setState({ loading: false, done: true }), 700)),
+      submit: this.submit,
+      reset: () => this.setState({ done: false, pw: '' })
+    };
+  }
+}
+</script>
+</body>
+</html>

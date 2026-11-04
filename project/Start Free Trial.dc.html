@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Start Free Trial — DashPatrol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>@view-transition{navigation:auto}html{background:#06341a}*{box-sizing:border-box}body{margin:0;font-family:'Outfit',system-ui,sans-serif;color:#0b1f12;background:#06341a;-webkit-font-smoothing:antialiased}a{color:#1f8a3b;text-decoration:none}a:hover{color:#0f6b2f}</style>
+</helmet>
+<dc-import name="Nav" active="trial" hint-size="100%,62px"></dc-import>
+<section style="background:radial-gradient(900px 600px at 85% 30%,#15893e 0%,transparent 60%),linear-gradient(180deg,#06341a,#0a4a24);padding:56px 32px 72px">
+  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:center">
+    <div style="color:#fff;display:flex;flex-direction:column;gap:20px">
+      <span style="align-self:flex-start;padding:8px 16px;border-radius:999px;background:#1f8a3b;border:1px solid rgba(143,227,59,0.45);font-size:14px;font-weight:600;letter-spacing:0.04em">FREE DURING EARLY ACCESS</span>
+      <h1 style="margin:0;font-size:clamp(40px,5vw,62px);line-height:1.03;font-weight:800;letter-spacing:-0.025em">Start growing on <span style="color:#a6f04f;font-style:italic">autopilot.</span></h1>
+      <p style="margin:0;font-size:18px;line-height:1.55;color:rgba(255,255,255,0.88);max-width:480px">Three quick steps and DashPatrol starts its first scan of your site today.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:16px">
+        <span style="display:flex;align-items:center;gap:10px"><svg width="16" height="16" viewBox="0 0 14 14" style="flex-shrink:0;vertical-align:-2px"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#a6f04f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>No credit card required</span>
+        <span style="display:flex;align-items:center;gap:10px"><svg width="16" height="16" viewBox="0 0 14 14" style="flex-shrink:0;vertical-align:-2px"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#a6f04f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Set up in under ten minutes</span>
+        <span style="display:flex;align-items:center;gap:10px"><svg width="16" height="16" viewBox="0 0 14 14" style="flex-shrink:0;vertical-align:-2px"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#a6f04f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Every change undoable in one click</span>
+        <span style="display:flex;align-items:center;gap:10px"><svg width="16" height="16" viewBox="0 0 14 14" style="flex-shrink:0;vertical-align:-2px"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#a6f04f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Works with Shopify, WordPress, Webflow, Wix and more</span>
+      </div>
+    </div>
+    <div style="padding:32px;border-radius:22px;background:linear-gradient(180deg,#ffffff,#f3faef);box-shadow:0 0 0 6px rgba(255,255,255,0.18),0 40px 80px rgba(0,0,0,0.35);display:flex;flex-direction:column;gap:20px">
+      <sc-if value="{{ inForm }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#1f8a3b;letter-spacing:0.04em"><span>STEP {{ step }} OF 3</span><span>{{ stepName }}</span></div>
+          <div style="height:8px;border-radius:8px;background:#e3efdf;overflow:hidden"><div style="height:100%;width:{{ progress }};border-radius:8px;background:linear-gradient(90deg,#2fa83e,#a6f04f);transition:width 0.3s"></div></div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <h2 style="margin:0;font-size:26px;font-weight:800">Create your account</h2>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Your name<input value="{{ name }}" onChange="{{ onName }}" placeholder="Jane Smith" style="padding:13px 14px;border-radius:12px;border:1.5px solid #d6e5d1;font-family:inherit;font-size:16px;outline:none;color:#0b1f12"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Work email<input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="you@business.com" style="padding:13px 14px;border-radius:12px;border:1.5px solid #d6e5d1;font-family:inherit;font-size:16px;outline:none;color:#0b1f12"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Password<input type="password" value="{{ pw }}" onChange="{{ onPw }}" placeholder="At least 6 characters" style="padding:13px 14px;border-radius:12px;border:1.5px solid #d6e5d1;font-family:inherit;font-size:16px;outline:none;color:#0b1f12"></label>
+        </div>
+      </sc-if>
+      <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <h2 style="margin:0;font-size:26px;font-weight:800">Connect your website</h2>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Website address<input value="{{ site }}" onChange="{{ onSite }}" placeholder="yourbusiness.com" style="padding:13px 14px;border-radius:12px;border:1.5px solid #d6e5d1;font-family:inherit;font-size:16px;outline:none;color:#0b1f12"></label>
+          <div style="font-size:14px;font-weight:600">Your platform</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px">
+            <sc-for list="{{ platforms }}" as="p" hint-placeholder-count="5">
+              <button type="button" onClick="{{ p.pick }}" style="padding:12px;border-radius:12px;border:1.5px solid {{ p.border }};background:{{ p.bg }};font-family:inherit;font-size:15px;font-weight:600;color:#0b1f12;cursor:pointer">{{ p.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <h2 style="margin:0;font-size:26px;font-weight:800">What should we focus on?</h2>
+          <p style="margin:0;font-size:15px;color:#33433a">Pick any that apply. You can change this later.</p>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <sc-for list="{{ goals }}" as="g" hint-placeholder-count="5">
+              <button type="button" onClick="{{ g.toggle }}" style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:12px;border:1.5px solid {{ g.border }};background:{{ g.bg }};font-family:inherit;font-size:15px;font-weight:600;color:#0b1f12;cursor:pointer;text-align:left"><span style="width:22px;height:22px;border-radius:6px;border:2px solid #1f8a3b;background:{{ g.boxBg }};color:#fff;display:grid;place-items:center;font-size:13px;font-weight:900;flex-shrink:0"><sc-if value="{{ g.on }}" hint-placeholder-val="{{ false }}"><svg width="13" height="13" viewBox="0 0 14 14" style="flex-shrink:0;vertical-align:-2px"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></sc-if></span>{{ g.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:20px 0">
+          <span style="width:76px;height:76px;border-radius:50%;background:linear-gradient(180deg,#2fa83e,#0f6b2f);display:grid;place-items:center"><svg width="38" height="38" viewBox="0 0 14 14" style="flex-shrink:0;vertical-align:-2px"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#c8f59a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+          <h2 style="margin:0;font-size:28px;font-weight:800">You're in, {{ firstName }}!</h2>
+          <p style="margin:0;font-size:16px;line-height:1.5;color:#33433a;max-width:380px">DashPatrol is scanning {{ siteShown }} now. Your first plan will be ready within the hour, and we sent the details to {{ email }}.</p>
+          <a href="How%20It%20Works.dc.html" style="padding:14px 28px;border-radius:12px;background:#0f6b2f;color:#fff;font-size:16px;font-weight:700;text-decoration:none">See what happens next →</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}"><div style="padding:11px 14px;border-radius:10px;background:#fdecea;color:#a93226;font-size:14px;font-weight:600">{{ err }}</div></sc-if>
+      <sc-if value="{{ inForm }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:12px">
+          <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}"><button onClick="{{ back }}" style="padding:15px 20px;border-radius:12px;border:1.5px solid #d6e5d1;background:#fff;font-family:inherit;font-size:16px;font-weight:600;color:#0b1f12;cursor:pointer">← Back</button></sc-if>
+          <button onClick="{{ next }}" style="flex:1;padding:15px;border-radius:12px;border:none;background:linear-gradient(180deg,#b0f25c,#86dc35);color:#06341a;font-family:inherit;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 10px 24px rgba(143,227,59,0.3)">{{ nextLabel }}</button>
+        </div>
+        <p style="margin:0;text-align:center;font-size:14px;color:#33433a">Already have an account? <a href="Sign%20In.dc.html" style="color:#1f8a3b;font-weight:700">Sign in</a></p>
+      </sc-if>
+    </div>
+  </div>
+</section>
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const PLATFORMS = ['Shopify', 'WordPress', 'Webflow', 'Wix', 'Other'];
+const GOALS = ['More visits from Google', 'Rank for specific searches', 'More sales from search', 'Fix site problems', 'Publish helpful articles'];
+class Component extends DCLogic {
+  state = { step: 1, name: '', email: '', pw: '', site: '', platform: '', goals: { 0: true }, err: '', loading: false };
+  validate() {
+    const s = this.state;
+    if (s.step === 1) {
+      if (!s.name.trim()) return 'Please enter your name.';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email)) return 'Please enter a valid email address.';
+      if (s.pw.length < 6) return 'Password must be at least 6 characters.';
+    }
+    if (s.step === 2) {
+      if (!/^[^\s.]+\.[^\s]{2,}/.test(s.site.replace(/^https?:\/\//, ''))) return 'Please enter your website address.';
+      if (!s.platform) return 'Please pick your platform.';
+    }
+    if (s.step === 3 && !Object.values(s.goals).some(Boolean)) return 'Pick at least one focus.';
+    return '';
+  }
+  renderVals() {
+    const s = this.state;
+    const set = k => e => this.setState({ [k]: e.target.value, err: '' });
+    return {
+      ...s, s1: s.step === 1, s2: s.step === 2, s3: s.step === 3, s4: s.step === 4, inForm: s.step < 4,
+      canBack: s.step > 1 && s.step < 4, hasErr: !!s.err,
+      progress: (s.step / 3 * 100) + '%', stepName: ['Account', 'Website', 'Goals'][s.step - 1] || '',
+      nextLabel: s.loading ? 'Setting up…' : (s.step === 3 ? 'Start My Free Trial →' : 'Continue →'),
+      firstName: (s.name.trim().split(' ')[0]) || 'there', siteShown: s.site.replace(/^https?:\/\//, ''),
+      onName: set('name'), onEmail: set('email'), onPw: set('pw'), onSite: set('site'),
+      platforms: PLATFORMS.map(label => ({ label, bg: s.platform === label ? '#e6f5de' : '#fff', border: s.platform === label ? '#1f8a3b' : '#d6e5d1', pick: () => this.setState({ platform: label, err: '' }) })),
+      goals: GOALS.map((label, i) => { const on = !!s.goals[i]; return { label, on, boxBg: on ? '#1f8a3b' : '#fff', bg: on ? '#f0f9eb' : '#fff', border: on ? '#a6dd8a' : '#d6e5d1', toggle: () => this.setState(st => ({ goals: { ...st.goals, [i]: !st.goals[i] }, err: '' })) }; }),
+      back: () => this.setState({ step: s.step - 1, err: '' }),
+      next: () => {
+        if (s.loading) return;
+        const err = this.validate();
+        if (err) return this.setState({ err });
+        if (s.step < 3) return this.setState({ step: s.step + 1, err: '' });
+        this.setState({ loading: true });
+        setTimeout(() => this.setState({ loading: false, step: 4 }), 1000);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

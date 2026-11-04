@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</helmet>
+<header style="position:sticky;top:0;z-index:50;background:#06341a;border-bottom:1px solid rgba(255,255,255,0.07);font-family:'Outfit',system-ui,sans-serif">
+  <div style="max-width:1280px;margin:0 auto;padding:12px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <a href="Home.dc.html" style="display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none">
+      <span style="width:34px;height:34px;border-radius:9px;background:#8fe33b;display:grid;place-items:center;box-shadow:inset 0 -3px 0 rgba(0,0,0,0.12)">
+        <span style="width:14px;height:18px;border:4px solid #06341a;border-left-width:5px;border-radius:0 9px 9px 0"></span>
+      </span>
+      <span style="font-size:25px;font-weight:700;letter-spacing:-0.02em">DashPatrol</span>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;align-items:center;gap:30px;flex-wrap:wrap">
+      <a href="Benefits.dc.html" style="position:relative;color:#fff;font-size:15px;font-weight:500;text-decoration:none;padding:6px 0" style-hover="color:#8fe33b">Benefits<sc-if value="{{ isBenefits }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:-4px;height:3px;border-radius:3px;background:#8fe33b"></span></sc-if></a>
+      <a href="Features.dc.html" style="position:relative;color:#fff;font-size:15px;font-weight:500;text-decoration:none;padding:6px 0" style-hover="color:#8fe33b">Features<sc-if value="{{ isFeatures }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:-4px;height:3px;border-radius:3px;background:#8fe33b"></span></sc-if></a>
+      <a href="How%20It%20Works.dc.html" style="position:relative;color:#fff;font-size:15px;font-weight:500;text-decoration:none;padding:6px 0" style-hover="color:#8fe33b">How It Works<sc-if value="{{ isHow }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:-4px;height:3px;border-radius:3px;background:#8fe33b"></span></sc-if></a>
+      <a href="Pricing.dc.html" style="position:relative;color:#fff;font-size:15px;font-weight:500;text-decoration:none;padding:6px 0" style-hover="color:#8fe33b">Pricing<sc-if value="{{ isPricing }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:-4px;height:3px;border-radius:3px;background:#8fe33b"></span></sc-if></a>
+      <a href="FAQ.dc.html" style="position:relative;color:#fff;font-size:15px;font-weight:500;text-decoration:none;padding:6px 0" style-hover="color:#8fe33b">FAQ<sc-if value="{{ isFaq }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:-4px;height:3px;border-radius:3px;background:#8fe33b"></span></sc-if></a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:14px">
+      <a href="Sign%20In.dc.html" style="padding:9px 22px;border-radius:999px;border:1.5px solid rgba(255,255,255,0.85);color:#fff;font-size:15px;font-weight:600;text-decoration:none" style-hover="background:rgba(255,255,255,0.1);color:#fff">Sign In</a>
+      <a href="Start%20Free%20Trial.dc.html" style="padding:10px 22px;border-radius:999px;background:linear-gradient(180deg,#a6f04f,#7fd62f);color:#06341a;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 6px 18px rgba(143,227,59,0.35)" style-hover="filter:brightness(1.06);color:#06341a">Start Free Trial</a>
+    </div>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="width:44px;height:44px;border-radius:12px;border:1.5px solid rgba(255,255,255,0.4);background:transparent;display:grid;place-items:center;cursor:pointer">
+        <sc-if value="{{ closed }}" hint-placeholder-val="{{ true }}"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M3 6 H19 M3 11 H19 M3 16 H19" stroke="#fff" stroke-width="2.4" stroke-linecap="round"></path></svg></sc-if>
+        <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M5 5 L17 17 M17 5 L5 17" stroke="#fff" stroke-width="2.4" stroke-linecap="round"></path></svg></sc-if>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ showPanel }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:4px 24px 22px;display:flex;flex-direction:column;background:#06341a;border-top:1px solid rgba(255,255,255,0.08)">
+        <a href="Benefits.dc.html" style="display:flex;justify-content:space-between;align-items:center;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,0.1);color:#fff;font-size:18px;font-weight:600;text-decoration:none">Benefits<sc-if value="{{ isBenefits }}" hint-placeholder-val="{{ false }}"><span style="width:8px;height:8px;border-radius:50%;background:#8fe33b"></span></sc-if></a>
+        <a href="Features.dc.html" style="display:flex;justify-content:space-between;align-items:center;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,0.1);color:#fff;font-size:18px;font-weight:600;text-decoration:none">Features<sc-if value="{{ isFeatures }}" hint-placeholder-val="{{ false }}"><span style="width:8px;height:8px;border-radius:50%;background:#8fe33b"></span></sc-if></a>
+        <a href="How%20It%20Works.dc.html" style="display:flex;justify-content:space-between;align-items:center;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,0.1);color:#fff;font-size:18px;font-weight:600;text-decoration:none">How It Works<sc-if value="{{ isHow }}" hint-placeholder-val="{{ false }}"><span style="width:8px;height:8px;border-radius:50%;background:#8fe33b"></span></sc-if></a>
+        <a href="Pricing.dc.html" style="display:flex;justify-content:space-between;align-items:center;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,0.1);color:#fff;font-size:18px;font-weight:600;text-decoration:none">Pricing<sc-if value="{{ isPricing }}" hint-placeholder-val="{{ false }}"><span style="width:8px;height:8px;border-radius:50%;background:#8fe33b"></span></sc-if></a>
+        <a href="FAQ.dc.html" style="display:flex;justify-content:space-between;align-items:center;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,0.1);color:#fff;font-size:18px;font-weight:600;text-decoration:none">FAQ<sc-if value="{{ isFaq }}" hint-placeholder-val="{{ false }}"><span style="width:8px;height:8px;border-radius:50%;background:#8fe33b"></span></sc-if></a>
+        <a href="Contact.dc.html" style="display:flex;justify-content:space-between;align-items:center;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,0.1);color:#fff;font-size:18px;font-weight:600;text-decoration:none">Contact<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}"><span style="width:8px;height:8px;border-radius:50%;background:#8fe33b"></span></sc-if></a>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px">
+        <a href="Sign%20In.dc.html" style="text-align:center;padding:13px;border-radius:999px;border:1.5px solid rgba(255,255,255,0.85);color:#fff;font-size:16px;font-weight:600;text-decoration:none">Sign In</a>
+        <a href="Start%20Free%20Trial.dc.html" style="text-align:center;padding:13px;border-radius:999px;background:linear-gradient(180deg,#a6f04f,#7fd62f);color:#06341a;font-size:16px;font-weight:700;text-decoration:none">Start Free Trial</a>
+      </div>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;benefits&quot;,&quot;features&quot;,&quot;how&quot;,&quot;pricing&quot;,&quot;faq&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false };
+  onResize = () => this.setState({ w: window.innerWidth });
+  componentDidMount() { window.addEventListener('resize', this.onResize); this.onResize(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const a = this.props.active;
+    const mobile = this.state.w < 960;
+    const open = mobile && this.state.menu;
+    return { isBenefits: a === 'benefits', isFeatures: a === 'features', isHow: a === 'how', isPricing: a === 'pricing', isFaq: a === 'faq', isContact: a === 'contact',
+      isDesktop: !mobile, isMobile: mobile, open, closed: !open, showPanel: open,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })) };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Pricing — DashPatrol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>@view-transition{navigation:auto}html{background:#06341a}*{box-sizing:border-box}body{margin:0;font-family:'Outfit',system-ui,sans-serif;color:#0b1f12;background:#06341a;-webkit-font-smoothing:antialiased}a{color:#1f8a3b;text-decoration:none}a:hover{color:#0f6b2f}</style>
+</helmet>
+<dc-import name="Nav" active="pricing" hint-size="100%,62px"></dc-import>
+<dc-import name="PageHero" eyebrow="Pricing" title="Less than one agency invoice. Free during" accent="early access." sub="Join now and use every Growth feature at no cost while we are in early access. No credit card required." hint-size="100%,380px"></dc-import>
+<section style="background:linear-gradient(180deg,#ffffff,#f7fcf4);padding:6px 32px 56px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:30px">
+    <div style="display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:#eaf5e4;border:1px solid #d6e9cf">
+      <button onClick="{{ setMonthly }}" style="padding:10px 22px;border-radius:999px;border:none;background:{{ mBg }};color:{{ mColor }};font-family:inherit;font-size:15px;font-weight:700;cursor:pointer">Monthly</button>
+      <button onClick="{{ setAnnual }}" style="padding:10px 22px;border-radius:999px;border:none;background:{{ aBg }};color:{{ aColor }};font-family:inherit;font-size:15px;font-weight:700;cursor:pointer">Yearly <span style="color:{{ discColor }}">-20%</span></button>
+    </div>
+    <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;align-items:stretch">
+      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+        <div style="position:relative;padding:30px 26px;border-radius:20px;border:{{ p.border }};background:{{ p.bg }};color:{{ p.color }};display:flex;flex-direction:column;gap:16px;box-shadow:0 14px 40px rgba(16,80,36,0.1)">
+          <sc-if value="{{ p.popular }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:-13px;left:26px;padding:5px 14px;border-radius:999px;background:#f2e43a;color:#3d3a06;font-size:12px;font-weight:800;letter-spacing:0.06em">MOST POPULAR</span></sc-if>
+          <div style="font-size:26px;font-weight:800;letter-spacing:-0.01em">{{ p.name }}</div>
+          <div style="font-size:15px;line-height:1.5;opacity:0.85">{{ p.desc }}</div>
+          <div style="display:flex;align-items:baseline;gap:6px"><span style="font-size:48px;font-weight:800;letter-spacing:-0.03em">{{ p.price }}</span><span style="font-size:15px;opacity:0.8">/ month</span></div>
+          <div style="font-size:13px;font-weight:600;color:{{ p.noteColor }}">{{ p.note }}</div>
+          <a href="Start%20Free%20Trial.dc.html" style="text-align:center;padding:14px;border-radius:12px;background:{{ p.btnBg }};color:{{ p.btnColor }};font-size:16px;font-weight:700;text-decoration:none">{{ p.cta }}</a>
+          <div style="display:flex;flex-direction:column;gap:10px;padding-top:6px">
+            <sc-for list="{{ p.items }}" as="it" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:10px;font-size:15px;line-height:1.4"><svg width="16" height="16" viewBox="0 0 14 14" style="flex-shrink:0;vertical-align:-2px"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="{{ p.check }}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>{{ it }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:22px;flex-wrap:wrap;justify-content:center;font-size:15px;color:#33433a">
+      <span style="display:flex;align-items:center;gap:6px"><svg width="16" height="16" viewBox="0 0 14 14" style="flex-shrink:0;vertical-align:-2px"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#1f8a3b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> No credit card required</span><span style="display:flex;align-items:center;gap:6px"><svg width="16" height="16" viewBox="0 0 14 14" style="flex-shrink:0;vertical-align:-2px"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#1f8a3b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Cancel anytime</span><span style="display:flex;align-items:center;gap:6px"><svg width="16" height="16" viewBox="0 0 14 14" style="flex-shrink:0;vertical-align:-2px"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#1f8a3b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> Every change undoable</span>
+    </div>
+  </div>
+</section>
+<section style="background:#f7fcf4;padding:10px 32px 64px">
+  <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:16px">
+    <h2 style="margin:0 0 8px;text-align:center;font-size:clamp(34px,4.4vw,50px);font-weight:800;letter-spacing:-0.025em;color:#0b1f12">Pricing <span style="position:relative;display:inline-block;color:#13793a;font-style:italic">Questions<svg viewBox="0 0 300 16" preserveAspectRatio="none" style="position:absolute;left:10%;bottom:-8px;width:90%;height:12px"><path d="M3 11 C 100 3 200 3 297 8" fill="none" stroke="#5fd14a" stroke-width="5" stroke-linecap="round"></path></svg></span></h2>
+    <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+      <div style="border-radius:16px;background:#fff;border:1px solid #e1eedc;overflow:hidden;box-shadow:0 6px 20px rgba(16,80,36,0.06)">
+        <button onClick="{{ q.toggle }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;border:none;background:transparent;font-family:inherit;font-size:17px;font-weight:600;color:#0b1f12;cursor:pointer;text-align:left">{{ q.q }}<span style="width:30px;height:30px;border-radius:50%;background:#e3f6d6;display:grid;place-items:center;flex-shrink:0"><svg width="14" height="14" viewBox="0 0 14 14" style="transform:rotate({{ q.rot }});transition:transform 0.2s"><path d="M7 1 V13 M1 7 H13" stroke="#13793a" stroke-width="2.4" stroke-linecap="round"></path></svg></span></button>
+        <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}"><div style="padding:0 22px 18px;font-size:15px;line-height:1.6;color:#33433a">{{ q.a }}</div></sc-if>
+      </div>
+    </sc-for>
+    <a href="FAQ.dc.html" style="align-self:center;font-size:16px;font-weight:700;color:#1f8a3b">See all FAQs →</a>
+  </div>
+</section>
+<dc-import name="StatsBand" hint-size="100%,190px"></dc-import>
+<dc-import name="CTA" hint-size="100%,320px"></dc-import>
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const PLANS = [
+  { name: 'Starter', m: 29, desc: 'For a single small site getting started on Google.', items: ['1 website', 'Weekly page improvements', '4 articles per month', 'Broken link fixing', 'Weekly plain report'] },
+  { name: 'Growth', m: 59, popular: true, desc: 'For businesses ready to grow customers from search.', items: ['Everything in Starter', '12 articles per month', 'Internal linking', 'Competitor watch', 'Rank tracking, 250 searches', 'Second-AI checks on everything'] },
+  { name: 'Scale', m: 149, desc: 'For multiple sites, stores or locations.', items: ['Everything in Growth', 'Up to 5 websites', '40 articles per month', 'Rank tracking, 1,500 searches', 'Priority support'] }
+];
+const FAQS = [
+  { q: 'Is it really free during early access?', a: 'Yes. Early access members get every Growth feature at no cost. We will give at least 30 days notice before any paid plan starts, and you can cancel anytime.' },
+  { q: 'Do I need a credit card to start?', a: 'No. You can sign up and connect your site without entering any payment details.' },
+  { q: 'Can I switch plans later?', a: 'Anytime. Upgrades take effect right away and downgrades apply at the next billing date.' },
+  { q: 'What happens to my changes if I cancel?', a: 'They stay on your site. You can also undo any or all of them before you leave.' }
+];
+class Component extends DCLogic {
+  state = { annual: true, open: 0 };
+  renderVals() {
+    const an = this.state.annual;
+    const plans = PLANS.map(p => {
+      const pop = !!p.popular;
+      const price = an ? Math.round(p.m * 0.8) : p.m;
+      return { ...p, popular: pop, price: '$' + price,
+        note: pop ? 'Free while in early access' : (an ? 'Billed yearly, $' + price * 12 + '/yr' : 'Billed monthly'),
+        cta: pop ? 'Start Free Trial' : 'Choose ' + p.name,
+        border: pop ? '2px solid #a6f04f' : '1px solid #dcebd6',
+        bg: pop ? 'linear-gradient(180deg,#0a4a24,#06341a)' : '#fff', color: pop ? '#fff' : '#0b1f12',
+        noteColor: pop ? '#a6f04f' : '#1f8a3b', check: pop ? '#a6f04f' : '#1f8a3b',
+        btnBg: pop ? 'linear-gradient(180deg,#b0f25c,#86dc35)' : '#0f6b2f', btnColor: pop ? '#06341a' : '#fff' };
+    });
+    const faqs = FAQS.map((f, i) => ({ ...f, open: this.state.open === i, rot: this.state.open === i ? '45deg' : '0deg',
+      toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })) }));
+    return { plans, faqs,
+      mBg: an ? 'transparent' : '#0f6b2f', mColor: an ? '#0b1f12' : '#fff',
+      aBg: an ? '#0f6b2f' : 'transparent', discColor: an ? '#a6f04f' : '#1f8a3b', aColor: an ? '#fff' : '#0b1f12',
+      setMonthly: () => this.setState({ annual: false }), setAnnual: () => this.setState({ annual: true }) };
+  }
+}
+</script>
+</body>
+</html>
