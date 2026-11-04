@@ -1,0 +1,39 @@
+import type { IntegrationInfo, IntegrationStatus, SourceStatus } from "./types";
+
+/**
+ * Every app the dashboard knows about. To add a new one, write a fetcher next
+ * to ga4.ts / gsc.ts, call it from overview.ts, then switch its entry here
+ * from "coming_soon" to a live status.
+ */
+const CATALOG: Omit<IntegrationInfo, "status" | "detail">[] = [
+  { id: "ga4", name: "Google Analytics", description: "Traffic, users and engagement" },
+  { id: "gsc", name: "Google Search Console", description: "Search clicks, impressions and queries" },
+  { id: "keywords", name: "Google Keyword Planner", description: "Search volume and keyword ideas" },
+  { id: "google-ads", name: "Google Ads", description: "Spend, conversions and ROAS" },
+  { id: "meta", name: "Meta (Facebook / Instagram)", description: "Ad and social performance" },
+  { id: "mailchimp", name: "Mailchimp", description: "Email opens, clicks and growth" },
+  // Shopify isn't listed: it already works as a website connection (setup and the Content page show its real status),
+  // so a "Coming soon" here would be wrong for every store that is connected.
+];
+
+const fromSource = (s: SourceStatus): IntegrationStatus => (s === "live" ? "connected" : s);
+
+const DETAIL: Record<IntegrationStatus, string> = {
+  connected: "Pulling live data",
+  demo: "Not connected",
+  error: "Connection problem",
+  coming_soon: "Coming soon",
+  setup: "Needs setup",
+};
+
+export function buildIntegrations(live: { ga: SourceStatus; gsc: SourceStatus; keywords?: boolean }): IntegrationInfo[] {
+  const statuses: Record<string, IntegrationStatus> = {
+    ga4: fromSource(live.ga),
+    gsc: fromSource(live.gsc),
+    keywords: live.keywords ? "connected" : "setup",
+  };
+  return CATALOG.map((app) => {
+    const status = statuses[app.id] ?? "coming_soon";
+    return { ...app, status, detail: DETAIL[status] };
+  });
+}
