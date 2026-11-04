@@ -1,0 +1,148 @@
+import { resolveRange } from "./dates";
+import { envGa4PropertyId, fetchGa4, ga4OpenUrl } from "./ga4";
+import { getServiceAccount, type GoogleAuth } from "./google-auth";
+import { envGscSiteUrl, fetchGsc, gscOpenUrl } from "./gsc";
+import { buildIntegrations } from "./integrations";
+import { signInAvailable, type Connection } from "./connection";
+import { ensureSchema, hasDatabase, sql } from "./db";
+import { keywordsReady } from "./keywords";
+import { canSaveClient } from "./oauth-client";
+import type { ConnectionInfo, OverviewResponse, PeriodRanges, RangeKey, SourceResult } from "./types";
+
+const CACHE_TTL_MS = 10 * 60 * 1000;
+const memoryCache = new Map<string, { at: number; data: OverviewResponse }>();
+
+/** Recent responses live in Neon when it's set up, so every server instance shares them. */
+async function readCache(key: string): Promise<OverviewResponse | null> {
+  if (!hasDatabase()) {
+    const hit = memoryCache.get(key);
+    return hit && Date.now() - hit.at < CACHE_TTL_MS ? hit.data : null;
+  }
+  await ensureSchema();
+  const [row] = await sql`
+    SELECT data FROM insights_report_cache
+    WHERE cache_key = ${key} AND fetched_at > now() - make_interval(secs => ${CACHE_TTL_MS / 1000})`;
+  return row?.data ? (JSON.parse(row.data) as OverviewResponse) : null;
+}
+
+async function writeCache(key: string, data: OverviewResponse): Promise<void> {
+  if (!hasDatabase()) {
+    memoryCache.set(key, { at: Date.now(), data });
+    return;
+  }
+  await sql`
+    INSERT INTO insights_report_cache (cache_key, data, fetched_at)
+    VALUES (${key}, ${JSON.stringify(data)}::jsonb, now())
+    ON CONFLICT (cache_key) DO UPDATE SET data = EXCLUDED.data, fetched_at = now()`;
+}
+
+function hasServiceAccount(): boolean {
+  try {
+    return Boolean(getServiceAccount());
+  } catch {
+    return true; // credentials are present but malformed, let the fetch report it
+  }
+}
+
+interface Source {
+  auth: GoogleAuth | null;
+  gaId?: string;
+  site?: string;
+  info: ConnectionInfo;
+}
+
+/** A signed in Google account wins; otherwise fall back to a server service account. */
+async function resolveSource(conn: Connection | null, redirectUri: string): Promise<Source> {
+  const oauthAvailable = await signInAvailable();
+  const setup = { canSaveClient: canSaveClient(), redirectUri };
+  if (conn && oauthAvailable) {
+    return {
+      auth: { kind: "oauth", refreshToken: conn.refreshToken },
+      gaId: conn.gaPropertyId,
+      site: conn.gscSiteUrl,
+      info: { mode: "oauth", oauthAvailable, ...setup, email: conn.email, gaPropertyId: conn.gaPropertyId, gscSiteUrl: conn.gscSiteUrl },
+    };
+  }
+  if (hasServiceAccount()) {
+    const gaId = envGa4PropertyId();
+    const site = envGscSiteUrl();
+    return {
+      auth: { kind: "service_account" },
+      gaId,
+      site,
+      info: { mode: "service_account", oauthAvailable, ...setup, gaPropertyId: gaId, gscSiteUrl: site },
+    };
+  }
+  return { auth: null, info: { mode: "none", oauthAvailable, ...setup } };
+}
+
+async function load<T>(
+  auth: GoogleAuth | null,
+  id: string | undefined,
+  missing: string,
+  ranges: PeriodRanges,
+  live: (auth: GoogleAuth, id: string, r: PeriodRanges) => Promise<T>,
+  openUrl: (id: string) => string
+): Promise<SourceResult<T>> {
+  // Not connected: no numbers at all. Made up sample numbers would read as the customer's own.
+  if (!auth) {
+    return { status: "demo", range: ranges.current, data: null };
+  }
+  if (!id) {
+    return { status: "error", range: ranges.current, data: null, error: missing };
+  }
+  try {
+    return { status: "live", range: ranges.current, data: await live(auth, id, ranges), openUrl: openUrl(id) };
+  } catch (err) {
+    return {
+      status: "error",
+      range: ranges.current,
+      data: null,
+      error: err instanceof Error ? err.message : String(err),
+      openUrl: openUrl(id),
+    };
+  }
+}
+
+export async function getOverview(
+  accountId: string,
+  rangeKey: RangeKey,
+  conn: Connection | null,
+  redirectUri: string,
+  refresh = false,
+  /** Other sites sharing the Analytics tag, left out of the numbers. */
+  excludeHosts: string[] = []
+): Promise<OverviewResponse> {
+  const source = await resolveSource(conn, redirectUri);
+  const cacheKey = [accountId, rangeKey, source.info.mode, source.gaId, source.site, excludeHosts.join(",")].join("|");
+  if (!refresh) {
+    const hit = await readCache(cacheKey).catch(() => null);
+    if (hit) return hit;
+  }
+
+  // GA4 is complete through yesterday; Search Console lags about 3 days.
+  const [ga, gsc] = await Promise.all([
+    load(source.auth, source.gaId, "Choose a Google Analytics property in Settings.",
+      resolveRange(rangeKey, 1), (auth, id, ranges) => fetchGa4(auth, id, ranges, excludeHosts), ga4OpenUrl),
+    load(source.auth, source.site, "Choose a Search Console property in Settings.",
+      resolveRange(rangeKey, 3), fetchGsc, gscOpenUrl),
+  ]);
+
+  const data: OverviewResponse = {
+    generatedAt: new Date().toISOString(),
+    rangeKey,
+    ga,
+    gsc,
+    connection: source.info,
+    integrations: buildIntegrations({
+      ga: ga.status,
+      gsc: gsc.status,
+      keywords: await keywordsReady().catch(() => false),
+    }),
+  };
+  // Sample data is cheap to rebuild, so only live results are stored.
+  if (ga.status === "live" && gsc.status === "live") {
+    await writeCache(cacheKey, data).catch(() => undefined);
+  }
+  return data;
+}
