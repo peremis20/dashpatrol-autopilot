@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign In — DashPatrol</title>
+<meta name="description" content="Sign in to DashPatrol to see what your SEO team did for your site this week.">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DashPatrol">
+<meta property="og:title" content="Sign In — DashPatrol">
+<meta property="og:description" content="Sign in to DashPatrol to see what your SEO team did for your site this week.">
+<meta property="og:url" content="https://dashpatrol.io/sign-in.html">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#06341a">
+<link rel="preload" href="fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/auth.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__bar">
+    <a href="index.html" class="brand" aria-label="DashPatrol home">
+      <span class="brand__mark"><span></span></span>
+      <span class="brand__name">DashPatrol</span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="benefits.html">Benefits</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <div class="nav__actions">
+      <a href="sign-in.html" class="btn-outline-pill">Sign In</a>
+      <a href="start-free-trial.html" class="btn-lime-pill">Start Free Trial</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-panel">
+      <svg class="icon-open" width="22" height="22" viewBox="0 0 22 22"><path d="M3 6 H19 M3 11 H19 M3 16 H19" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <svg class="icon-close" width="22" height="22" viewBox="0 0 22 22"><path d="M5 5 L17 17 M17 5 L5 17" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="nav__panel" id="nav-panel">
+    <a href="benefits.html">Benefits</a>
+    <a href="features.html">Features</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav__panel-actions">
+      <a href="sign-in.html" class="signin">Sign In</a>
+      <a href="start-free-trial.html" class="trial">Start Free Trial</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="auth">
+  <div class="auth__grid">
+    <div class="auth__copy">
+      <h1>Your SEO team kept <em>working.</em></h1>
+      <p class="auth__lead">Sign in to see what DashPatrol did for your site this week.</p>
+      <div class="auth__feed">
+        <div class="feed-row"><svg class="check" width="16" height="16" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#a6f04f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="feed-row__text">Fixed 3 broken links</span><span class="feed-row__time">Today</span></div>
+        <div class="feed-row"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18 L10 12 L13 15 L20 7" fill="none" stroke="#a6f04f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6 H20 V11" fill="none" stroke="#a6f04f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="feed-row__text">Moved up 6 spots for a search</span><span class="feed-row__time">Today</span></div>
+        <div class="feed-row"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5" fill="none" stroke="#a6f04f" stroke-width="2.2"/><path d="M8.5 8 H15.5 M8.5 12 H15.5 M8.5 16 H12.5" stroke="#a6f04f" stroke-width="2" stroke-linecap="round"/></svg><span class="feed-row__text">2 articles waiting for your approval</span><span class="feed-row__time">New</span></div>
+      </div>
+    </div>
+    <div class="auth-card">
+      <div class="auth-done auth-done--signin" id="signin-done" hidden>
+        <span class="auth-done__badge"><svg width="38" height="38" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 7.5 L5.5 10.5 L11.5 3.5" fill="none" stroke="#c8f59a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h2 tabindex="-1">You're signed in</h2>
+        <p>Welcome back, <span data-bind="email"></span>.</p>
+        <a href="index.html" class="btn-solid">Go to homepage →</a>
+        <button type="button" class="btn-link" id="signout">Sign out</button>
+      </div>
+      <form class="auth-form" id="signin-form" method="post" action="#" novalidate>
+        <div><h2>Sign in to DashPatrol</h2><p class="auth-form__sub">New here? <a href="start-free-trial.html">Start your free trial</a></p></div>
+        <button type="button" class="btn-google" id="google"><svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.850-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Continue with Google</button>
+        <div class="auth-sep"><span></span>or with email<span></span></div>
+        <label class="field">Email
+          <input class="input" type="email" id="email" name="email" placeholder="you@business.com" autocomplete="email" aria-describedby="email-err">
+          <span class="field__err" id="email-err" aria-live="polite"></span>
+        </label>
+        <div class="field"><span class="field__head"><label for="pw">Password</label><a href="forgot-password.html">Forgot?</a></span>
+          <span class="pw-wrap" id="pw-wrap">
+            <input type="password" id="pw" name="password" placeholder="At least 6 characters" autocomplete="current-password" aria-describedby="pw-err">
+            <button type="button" class="pw-toggle" id="pw-toggle" aria-controls="pw" aria-pressed="false">Show</button>
+          </span>
+          <span class="field__err" id="pw-err" aria-live="polite"></span>
+        </div>
+        <label class="check-row"><input type="checkbox" id="remember" checked>Keep me signed in</label>
+        <button type="submit" class="btn-submit" id="signin-submit" disabled>Sign In →</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__about">
+      <a href="index.html" class="brand" aria-label="DashPatrol home">
+        <span class="brand__mark"><span></span></span>
+        <span class="brand__name">DashPatrol</span>
+      </a>
+      <p>Your SEO team, in one app. DashPatrol brings you customers from Google while you run your business.</p>
+      <span class="footer__tag">Free during early access</span>
+    </div>
+    <nav class="footer__col" aria-label="Product">
+      <h2 class="footer__heading">Product</h2>
+      <a href="benefits.html">Benefits</a>
+      <a href="features.html">Features</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="pricing.html">Pricing</a>
+    </nav>
+    <nav class="footer__col" aria-label="Account">
+      <h2 class="footer__heading">Account</h2>
+      <a href="start-free-trial.html">Start Free Trial</a>
+      <a href="sign-in.html">Sign In</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer__col">
+      <h2 class="footer__heading">Works with</h2>
+      <span>Shopify</span><span>WordPress</span><span>Webflow</span><span>Wix &amp; any website</span>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 DashPatrol. All rights reserved.</span>
+    <div class="footer__legal"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-service.html">Terms of Service</a><a href="mailto:hello@dashpatrol.io">hello@dashpatrol.io</a></div>
+  </div>
+</footer>
+
+<script src="assets/main.js" defer></script>
+<script src="assets/sign-in.js" defer></script>
+</body>
+</html>
