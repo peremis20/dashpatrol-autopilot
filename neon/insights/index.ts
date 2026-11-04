@@ -98,13 +98,13 @@ const routes: Record<string, Handler> = {
  * Plain HTML shown before the app loads (and to anyone without JavaScript, like Google's app reviewers): what
  * DashPatrol is, what it does with Google data, and links to the privacy policy and terms. React replaces it.
  */
-const HOME_TEXT = `<main style="min-height:100vh;margin:0;background:linear-gradient(160deg,#0A3520,#0F5A32);color:#fff;font:16px/1.6 Inter,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;padding:32px 16px;box-sizing:border-box">
+const HOME_TEXT = `<main style="min-height:100vh;margin:0;background:#06341A;color:#fff;font:16px/1.6 Outfit,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;padding:32px 16px;box-sizing:border-box">
 <div style="max-width:620px;text-align:center">
-<p style="margin:0 0 18px;font:800 26px 'Plus Jakarta Sans',Inter,sans-serif;display:inline-flex;align-items:center;gap:10px"><span style="display:inline-flex;width:34px;height:34px;border-radius:9px;background:#3DCB5A;color:#0B3B22;align-items:center;justify-content:center">D</span>DashPatrol</p>
-<h1 style="margin:0;font:800 clamp(30px,5vw,44px)/1.1 'Plus Jakarta Sans',Inter,sans-serif">Grow your business on <span style="color:#C6F432">autopilot.</span></h1>
+<p style="margin:0 0 18px;font:800 26px 'Outfit',system-ui,sans-serif;display:inline-flex;align-items:center;gap:10px"><span style="display:inline-flex;width:34px;height:34px;border-radius:9px;background:#3DCB5A;color:#0B3B22;align-items:center;justify-content:center">D</span>DashPatrol</p>
+<h1 style="margin:0;font:800 clamp(30px,5vw,44px)/1.1 'Outfit',system-ui,sans-serif">Grow your business on <span style="color:#A6F04F">autopilot.</span></h1>
 <p style="color:rgba(255,255,255,.85)">DashPatrol helps your website rank on Google and turn that traffic into sales. It reads your Search Console (read only) and Analytics (read only) to choose which pages to improve and to measure every change. Only when you click Set it up for me does it verify your site, add it and its sitemap to Search Console and create an Analytics property. Your data is used only for your own site, never sold, shared or used for ads.</p>
 <p style="color:rgba(255,255,255,.7);font-size:14px">Loading DashPatrol&hellip;</p>
-<p style="font-size:14px"><a href="/privacy" style="color:#C6F432">Privacy policy</a> &middot; <a href="/terms" style="color:#C6F432">Terms of use</a></p>
+<p style="font-size:14px"><a href="/privacy" style="color:#A6F04F">Privacy policy</a> &middot; <a href="/terms" style="color:#A6F04F">Terms of use</a></p>
 </div>
 </main>`;
 
@@ -126,10 +126,8 @@ async function page(req: Request): Promise<Response> {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ${embedded ? '<meta name="robots" content="noindex">\n' : ""}<meta name="description" content="DashPatrol helps your website rank on Google: it reads your Search Console and Analytics, improves your pages, writes articles you allow and measures what worked.">
 ${bridge}<title>${api.APP_NAME}</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="${assets}/app.css">
-<style>:root{--font-serif:"Fraunces",Georgia,serif;--font-dash:"Inter",system-ui,sans-serif}body{margin:0;background:#F7F3EC;color:#2B2A27}</style>
+<style>@font-face{font-family:"Outfit";font-style:normal;font-weight:400 900;font-display:swap;src:url(${assets}/fonts/outfit-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Outfit";font-style:normal;font-weight:400 900;font-display:swap;src:url(${assets}/fonts/outfit-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}:root{--font-serif:"Outfit",system-ui,sans-serif;--font-dash:"Outfit",system-ui,sans-serif}body{margin:0;background:#F3F7F1;color:#0B1F12;-webkit-font-smoothing:antialiased}.font-serif{font-weight:700;letter-spacing:-.02em}</style>
 </head>
 <body>
 <div id="root">${embedded ? "" : HOME_TEXT}</div>

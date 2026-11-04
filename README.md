@@ -121,8 +121,8 @@ in the same Neon project as its database. `DATABASE_URL` is injected automatical
    plus `neon/dist/loader.zip`, a tiny function that downloads that server
    from the CDN and checks its SHA-256 before running it.
 2. Deploy `loader.zip` as a function (slug `insights`) with these variables:
-   - `ASSET_BASE_URL`: `https://cdn.jsdelivr.net/gh/peremis20/Shopify@<commit>/neon/insights/public`
-   - `SERVER_BUNDLE_URL`: `https://cdn.jsdelivr.net/gh/peremis20/Shopify@<commit>/neon/insights/release/server.mjs`
+   - `ASSET_BASE_URL`: `https://cdn.jsdelivr.net/gh/peremis20/dashpatrol-autopilot@<commit>/app/neon/insights/public`
+   - `SERVER_BUNDLE_URL`: `https://cdn.jsdelivr.net/gh/peremis20/dashpatrol-autopilot@<commit>/app/neon/insights/release/server.mjs`
    - `SERVER_BUNDLE_SHA256`: printed by the build
    - `APP_URL`: the function's invocation URL
    - `SESSION_SECRET`: a long random string (encrypts stored Google credentials and tokens)

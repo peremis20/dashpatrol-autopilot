@@ -38,34 +38,42 @@ export function SignInScreen({ error }: { error?: string | null }) {
     const h = window.location.host;
     if (/^app\./i.test(h)) setHome(`https://${h.slice(4)}`);
   }, []);
-  const jakarta = { fontFamily: '"Plus Jakarta Sans", Inter, system-ui, sans-serif' };
-  const links: [string, string][] = [["Benefits", "#benefits"], ["Features", "#see"], ["How It Works", "#how"], ["Savings", "#calc"], ["FAQ", "#faq"]];
+  const site = home || "https://dashpatrol.io";
+  const links: [string, string][] = [
+    ["Benefits", "/benefits.html"],
+    ["Features", "/features.html"],
+    ["How It Works", "/how-it-works.html"],
+    ["Pricing", "/pricing.html"],
+    ["FAQ", "/faq.html"],
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0A3520] via-[#0E4A2A] to-[#12602F] font-dash text-white">
-      <header className="bg-[#0B3B22]">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-          <a target="_top" href={`${home}/`} className="flex items-center gap-2 text-[22px] font-extrabold text-white no-underline" style={jakarta}>
-            <span className="inline-flex h-[30px] w-[30px] items-center justify-center rounded-lg bg-[#3DCB5A] text-lg text-[#0B3B22]">D</span>
+    <div className="min-h-screen bg-[#06341A] bg-[radial-gradient(900px_620px_at_78%_38%,#15893E_0%,rgba(21,137,62,0)_62%)] font-dash text-white">
+      <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-[#06341A]">
+        <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-5 px-5 py-3 sm:px-8">
+          <a target="_top" href={`${site}/`} className="flex items-center gap-2 text-[25px] font-bold tracking-[-0.02em] text-white no-underline">
+            <span className="grid h-[34px] w-[34px] place-items-center rounded-[9px] bg-[#8FE33B] shadow-[inset_0_-3px_0_rgba(0,0,0,0.12)]">
+              <span className="h-[18px] w-[14px] rounded-r-[9px] border-[4px] border-l-[5px] border-[#06341A]" />
+            </span>
             DashPatrol
           </a>
-          {home && <nav className="hidden items-center gap-6 text-[15px] font-medium md:flex">
-            {links.map(([label, hash]) => (
-              <a key={hash} target="_top" href={`${home}/${hash}`} className="text-white/85 no-underline hover:text-white">{label}</a>
+          <nav className="hidden items-center gap-[30px] text-[15px] font-medium md:flex" aria-label="Main">
+            {links.map(([label, path]) => (
+              <a key={path} target="_top" href={`${site}${path}`} className="text-white no-underline hover:text-[#8FE33B]">{label}</a>
             ))}
-          </nav>}
-          <a target="_top" href={`${home}/`} className="text-sm font-semibold text-[#C6F432] no-underline hover:underline md:hidden">Home</a>
+          </nav>
+          <a target="_top" href={`${site}/`} className="text-sm font-semibold text-[#A6F04F] no-underline hover:underline md:hidden">Home</a>
         </div>
       </header>
 
       <div className="flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-4xl">
           <div className="mb-10 text-center">
-            <p className="mb-4 inline-block rounded-full bg-[#1E8A45] px-4 py-2 text-[13px] font-bold tracking-[0.06em] text-[#E9FFD9]">
+            <p className="mb-4 inline-block rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[13px] font-bold tracking-[0.06em] text-[#A6F04F]">
               YOUR SEO TEAM, IN ONE APP
             </p>
-            <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl" style={jakarta}>
-              Grow your business on <span className="italic text-[#C6F432]">autopilot.</span>
+            <h1 className="text-4xl font-extrabold leading-tight tracking-[-0.02em] sm:text-6xl">
+              Grow your business on <span className="text-[#A6F04F]">autopilot.</span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-white/85">
               Sign in with the Google account that has your Analytics and Search Console. Connect your website, and a
@@ -73,14 +81,14 @@ export function SignInScreen({ error }: { error?: string | null }) {
             </p>
           </div>
 
-          <div className="mx-auto max-w-md rounded-3xl bg-white p-7 text-center text-[#0E2A1A] shadow-[0_30px_60px_rgba(0,0,0,0.35),0_0_0_8px_rgba(155,226,60,0.25)]">
+          <div className="mx-auto max-w-md rounded-3xl bg-white p-7 text-center text-[#0B1F12] shadow-[0_30px_60px_rgba(0,0,0,0.35)]">
             {error && <p className="mb-4 rounded-lg bg-dash-down/5 p-3 text-sm text-dash-down">{error}</p>}
             {unreachable ? (
               <div className="space-y-3" role="alert">
                 <p className="text-sm">Couldn&apos;t reach DashPatrol. Check your connection and try again.</p>
                 <button
                   onClick={() => setAttempt((n) => n + 1)}
-                  className="rounded-xl bg-[#0F5A32] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0A3520]"
+                  className="rounded-xl bg-[#0F6B2F] px-4 py-2 text-sm font-semibold text-white hover:bg-[#06341A]"
                 >
                   Try again
                 </button>
@@ -89,9 +97,9 @@ export function SignInScreen({ error }: { error?: string | null }) {
               <div className="h-11" />
             ) : available ? (
               <>
-                <p className="mb-4 text-lg font-extrabold" style={jakarta}>Start free in one click</p>
+                <p className="mb-4 text-xl font-bold tracking-[-0.02em]">Start free in one click</p>
                 <ConnectButton label="Sign in with Google" />
-                <p className="mt-4 text-xs text-[#5C6660]">
+                <p className="mt-4 text-xs text-[#5B6B60]">
                   Free during early access. No credit card. DashPatrol reads your Analytics and Search Console. It only
                   changes something in your Google account when you ask it to, like Set it up for me (which adds your site
                   and creates an Analytics property).
@@ -109,16 +117,16 @@ export function SignInScreen({ error }: { error?: string | null }) {
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {FEATURES.map(({ icon: Icon, title, text }) => (
               <div key={title} className="rounded-2xl border border-white/15 bg-white/[0.07] p-5">
-                <Icon className="mb-3 h-6 w-6 text-[#C6F432]" />
+                <Icon className="mb-3 h-6 w-6 text-[#A6F04F]" />
                 <p className="font-semibold">{title}</p>
                 <p className="mt-1 text-sm text-white/80">{text}</p>
               </div>
             ))}
           </div>
           <p className="mt-8 text-center text-xs text-white/70">
-            <a target="_top" href={`${home}/privacy`} className="text-white/85 hover:underline">Privacy policy</a> ·{" "}
-            <a target="_top" href={`${home}/terms`} className="text-white/85 hover:underline">Terms of use</a> ·{" "}
-            <a target="_top" href={`${home}/`} className="text-white/85 hover:underline">DashPatrol home</a>
+            <a target="_top" href={`${site}/privacy-policy.html`} className="text-white/85 hover:underline">Privacy policy</a> ·{" "}
+            <a target="_top" href={`${site}/terms-of-service.html`} className="text-white/85 hover:underline">Terms of use</a> ·{" "}
+            <a target="_top" href={`${site}/`} className="text-white/85 hover:underline">DashPatrol home</a>
           </p>
         </div>
       </div>

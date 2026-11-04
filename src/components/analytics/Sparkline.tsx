@@ -1,4 +1,4 @@
-export function Sparkline({ values, color = "#1F4D36" }: { values: number[]; color?: string }) {
+export function Sparkline({ values, color = "#0F6B2F" }: { values: number[]; color?: string }) {
   // A flat line (no change, or no data yet) says nothing, so draw nothing.
   if (values.length < 2 || values.every((v) => v === values[0])) return null;
   const max = Math.max(...values);

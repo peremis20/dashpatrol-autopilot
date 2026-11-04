@@ -1,6 +1,6 @@
 import { formatNumber, formatPct } from "./format";
 
-export const CHANNEL_COLORS = ["#1F4D36", "#B8693D", "#D9A26A", "#EBD3AE", "#8FA89A", "#C9C2B6"];
+export const CHANNEL_COLORS = ["#0F6B2F", "#1F8A3B", "#D9A26A", "#EBD3AE", "#8FB39A", "#C3D2C5"];
 
 interface Slice {
   name: string;
@@ -22,7 +22,7 @@ export function DonutChart({ slices, centerValue, centerLabel }: {
     <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center">
       <div className="relative h-44 w-44 shrink-0">
         <svg viewBox="0 0 160 160" className="h-full w-full -rotate-90" role="img" aria-label="Traffic by channel">
-          <circle cx="80" cy="80" r={r} fill="none" stroke="#F1ECE3" strokeWidth="22" />
+          <circle cx="80" cy="80" r={r} fill="none" stroke="#E7F1E7" strokeWidth="22" />
           {slices.map((s, i) => {
             const len = (s.share / 100) * circ;
             const dash = `${Math.max(0, len - gap)} ${circ}`;

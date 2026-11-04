@@ -65,7 +65,7 @@ export function Backlinks() {
         Links from other websites tell Google your site is trusted. Each week the app looks on Google for real sites on your topics that could link to you, and writes an email for each one. You send it from your own email, so it comes from a real person. Nothing is sent for you.
       </p>
       <div className="mb-3 flex flex-wrap items-center gap-3">
-        <div className="flex rounded-lg bg-[#F1ECE3] p-0.5 text-xs font-medium">
+        <div className="flex rounded-lg bg-[#E7F1E7] p-0.5 text-xs font-medium">
           {STATUS.map((s) => {
             const n = all.filter((p) => (s.id === "open" ? p.status === "new" : p.status === s.id)).length;
             return (
@@ -126,7 +126,7 @@ function ProspectRow({ p, onMark }: { p: Prospect; onMark: (url: string, s: Pros
           {p.title || p.domain}
         </a>
         <span className="text-xs text-dash-muted">{p.domain}</span>
-        <span className="rounded-full bg-[#F1ECE3] px-2 py-0.5 text-xs text-dash-ink" title={KIND[p.kind].hint}>{KIND[p.kind].label}</span>
+        <span className="rounded-full bg-[#E7F1E7] px-2 py-0.5 text-xs text-dash-ink" title={KIND[p.kind].hint}>{KIND[p.kind].label}</span>
         <span className="text-xs tabular-nums text-dash-muted" title="Site strength (Open PageRank)">{p.authority === null ? "not scored" : `${p.authority.toFixed(1)} / 10`}</span>
       </div>
       <p className="mt-1 whitespace-normal break-words text-xs text-dash-muted">{KIND[p.kind].hint} {p.snippet}</p>
@@ -149,7 +149,7 @@ function ProspectRow({ p, onMark }: { p: Prospect; onMark: (url: string, s: Pros
       </div>
       {err && <p className="mt-2 text-xs text-dash-down">{err}</p>}
       {email && (
-        <div className="mt-3 rounded-lg border border-dash-line bg-[#FBF8F2] p-3">
+        <div className="mt-3 rounded-lg border border-dash-line bg-[#F7FAF6] p-3">
           <p className="text-xs font-semibold text-dash-ink">Subject: {email.subject}</p>
           <p className="mt-2 whitespace-pre-wrap break-words text-sm text-dash-ink">{email.body}</p>
           <div className="mt-2 flex gap-3">
@@ -166,7 +166,7 @@ function ProspectRow({ p, onMark }: { p: Prospect; onMark: (url: string, s: Pros
 function AuthorityPlanCard({ plan }: { plan: AuthorityPlan }) {
   const kept = plan.moves.filter((m) => m.kept);
   return (
-    <div className="mb-4 rounded-xl border border-dash-line bg-[#FBF8F2] px-4 py-3">
+    <div className="mb-4 rounded-xl border border-dash-line bg-[#F7FAF6] px-4 py-3">
       <div className="mb-1 flex flex-wrap items-baseline justify-between gap-2">
         <p className="text-[11px] font-semibold uppercase tracking-wide text-dash-muted">This week&apos;s authority plan</p>
         <span className="text-[11px] text-dash-muted">{new Date(plan.at).toLocaleDateString()} · {plan.checked === false ? "not yet checked by a second AI" : "checked by a second AI"}</span>

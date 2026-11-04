@@ -74,7 +74,7 @@ export function Opportunities({ range, brand, isTracked, onTrack }: {
       <div className="mb-2 flex flex-wrap items-center justify-between gap-2 text-sm">
         <div className="flex items-center gap-3">
           <span className="text-dash-muted">{formatNumber(shown.length)} opportunities</span>
-          <div className="flex rounded-lg bg-[#F1ECE3] p-0.5 text-xs font-medium">
+          <div className="flex rounded-lg bg-[#E7F1E7] p-0.5 text-xs font-medium">
             {(["list", "topics"] as const).map((v) => (
               <button
                 key={v}

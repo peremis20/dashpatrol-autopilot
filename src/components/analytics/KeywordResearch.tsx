@@ -60,8 +60,8 @@ const COMPETITION_STYLE: Record<Competition, string> = {
   LOW: "bg-dash-up/10 text-dash-up",
   MEDIUM: "bg-dash-copper/15 text-dash-copper",
   HIGH: "bg-dash-down/10 text-dash-down",
-  UNSPECIFIED: "bg-[#F1ECE3] text-dash-muted",
-  UNKNOWN: "bg-[#F1ECE3] text-dash-muted",
+  UNSPECIFIED: "bg-[#E7F1E7] text-dash-muted",
+  UNKNOWN: "bg-[#E7F1E7] text-dash-muted",
 };
 
 const siteFromProperty = (site?: string) =>
@@ -168,7 +168,7 @@ export function KeywordResearch({ connection, searchQueries, range, onChanged }:
       ) : (
         <>
           <div className="mb-4 flex flex-wrap items-center gap-3">
-            <div className="flex rounded-lg bg-[#F1ECE3] p-0.5 text-sm font-medium" role="tablist">
+            <div className="flex rounded-lg bg-[#E7F1E7] p-0.5 text-sm font-medium" role="tablist">
               {TABS.map((t) => (
                 <button
                   key={t.id}
@@ -540,7 +540,7 @@ function KeywordTool({ site, searchQueries, isTracked, onTrack }: {
             </p>
             {ideas.length > 0 && (
               <div className="flex flex-wrap items-center gap-3">
-                <div className="flex rounded-lg bg-[#F1ECE3] p-0.5 text-xs font-medium">
+                <div className="flex rounded-lg bg-[#E7F1E7] p-0.5 text-xs font-medium">
                   {(["keywords", "topics"] as const).map((v) => (
                     <button
                       key={v}
@@ -551,7 +551,7 @@ function KeywordTool({ site, searchQueries, isTracked, onTrack }: {
                     </button>
                   ))}
                 </div>
-                <div className="flex rounded-lg bg-[#F1ECE3] p-0.5 text-xs font-medium" title="How hard to rank for, from who is on Google page 1">
+                <div className="flex rounded-lg bg-[#E7F1E7] p-0.5 text-xs font-medium" title="How hard to rank for, from who is on Google page 1">
                   {(["all", "easy", "medium", "hard"] as const).map((v) => (
                     <button
                       key={v}
@@ -611,7 +611,7 @@ function KeywordTool({ site, searchQueries, isTracked, onTrack }: {
                             return <span className="whitespace-nowrap text-xs capitalize text-dash-muted" title="Estimate, not checked on Google yet">{d} (est.)</span>;
                           }
                           if (real.local || /\b(near me|nearby|open now)\b/i.test(i.keyword)) {
-                            return <span className="whitespace-nowrap rounded-full bg-[#F1ECE3] px-2 py-0.5 text-xs font-medium text-dash-muted" title="People want a place nearby. Google shows map listings first, so an article can't win this one.">Local, skip</span>;
+                            return <span className="whitespace-nowrap rounded-full bg-[#E7F1E7] px-2 py-0.5 text-xs font-medium text-dash-muted" title="People want a place nearby. Google shows map listings first, so an article can't win this one.">Local, skip</span>;
                           }
                           const why = [
                             real.avgAuthority !== null ? `Page 1 site strength ${real.avgAuthority}/10` : null,

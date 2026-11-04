@@ -394,7 +394,7 @@ function Plan({ strategy, monthly, currency, planning, error, note, onPlan }: {
             </span></p>
         )}
         <div
-          className="h-2 overflow-hidden rounded-full bg-[#F1ECE3]"
+          className="h-2 overflow-hidden rounded-full bg-[#E7F1E7]"
           role="progressbar"
           aria-label="Progress to the monthly visitor goal"
           aria-valuemin={0}

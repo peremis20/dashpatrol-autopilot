@@ -169,7 +169,7 @@ function RankTable({ rows }: { rows: RankWatchRow[] }) {
 const LEVEL_STYLE = {
   high: "bg-dash-down/10 text-dash-down",
   medium: "bg-[#FBF1E1] text-[#8A5A12]",
-  low: "bg-[#F1ECE3] text-dash-muted",
+  low: "bg-[#E7F1E7] text-dash-muted",
 } as const;
 
 function HealthList({ pages }: { pages: PageHealth[] }) {

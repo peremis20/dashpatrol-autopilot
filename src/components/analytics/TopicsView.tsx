@@ -34,7 +34,7 @@ export function TopicsView({ ideas, onTrack, unit = "searches a month" }: {
             {t.totalSearches ? `${formatNumber(t.totalSearches)} ${unit} · ` : ""}
             {t.keywords.length} keyword{t.keywords.length === 1 ? "" : "s"}
           </p>
-          <span className="w-fit rounded-full bg-[#F1ECE3] px-2 py-0.5 text-xs font-medium text-dash-ink">{t.contentType}</span>
+          <span className="w-fit rounded-full bg-[#E7F1E7] px-2 py-0.5 text-xs font-medium text-dash-ink">{t.contentType}</span>
           <div className="flex flex-wrap gap-1.5">
             {t.keywords.slice(0, 8).map((k) => (
               <span key={k.keyword} className="rounded-md bg-dash-bg px-2 py-0.5 text-xs text-dash-ink">

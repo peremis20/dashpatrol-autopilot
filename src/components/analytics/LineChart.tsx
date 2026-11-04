@@ -82,7 +82,7 @@ export function LineChart({ dates, series, height = 240 }: Props) {
           const yy = pad.top + innerH - frac * innerH;
           return (
             <g key={t}>
-              <line x1={pad.left} x2={pad.left + innerW} y1={yy} y2={yy} stroke="#ECE5D8" />
+              <line x1={pad.left} x2={pad.left + innerW} y1={yy} y2={yy} stroke="#DDE8DD" />
               <text x={pad.left - 8} y={yy} dy="0.32em" textAnchor="end" className="fill-dash-muted text-[11px]">
                 {formatCompact(max.left * frac)}
               </text>
@@ -108,7 +108,7 @@ export function LineChart({ dates, series, height = 240 }: Props) {
         ))}
 
         {hover !== null && (
-          <line x1={x(hover)} x2={x(hover)} y1={pad.top} y2={pad.top + innerH} stroke="#CFC6B6" strokeDasharray="3 3" />
+          <line x1={x(hover)} x2={x(hover)} y1={pad.top} y2={pad.top + innerH} stroke="#C3D2C5" strokeDasharray="3 3" />
         )}
 
         {series.map((s) => {

@@ -24,8 +24,8 @@ import { SortHeader, useSort } from "./sorting";
 import { Sparkline } from "./Sparkline";
 import { Card, CardHeader, DeltaBadge, GaLogo, GscLogo, Skeleton, SourceError } from "./ui";
 
-const GREEN = "#1F4D36";
-const COPPER = "#B8693D";
+const GREEN = "#0F6B2F";
+const COPPER = "#1F8A3B";
 const RANGE_STORAGE_KEY = "insights.range";
 const MODE_STORAGE_KEY = "insights.view";
 const SEEN_STORAGE_KEY = "insights.seen";
@@ -544,7 +544,7 @@ function Kpi({ icon, label, value, badge, spark, loading }: {
   return (
     <Card>
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F1ECE3] text-dash-green">{icon}</div>
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#E7F1E7] text-dash-green">{icon}</div>
         <p className="text-sm text-dash-muted">{label}</p>
       </div>
       {loading ? (
@@ -626,7 +626,7 @@ function QueriesCard({ data, openUrl, loading }: {
 }) {
   const [tab, setTab] = useState<"queries" | "pages">("queries");
   const tabs = (
-    <div className="flex rounded-lg bg-[#F1ECE3] p-0.5 text-xs font-medium">
+    <div className="flex rounded-lg bg-[#E7F1E7] p-0.5 text-xs font-medium">
       {(["queries", "pages"] as const).map((t) => (
         <button
           key={t}
@@ -690,7 +690,7 @@ const STATUS_STYLE: Record<IntegrationInfo["status"], string> = {
   connected: "bg-dash-up",
   demo: "bg-dash-copper",
   error: "bg-dash-down",
-  coming_soon: "bg-[#C9C2B6]",
+  coming_soon: "bg-[#C3D2C5]",
   setup: "bg-dash-copper",
 };
 
@@ -704,7 +704,7 @@ function ConnectedApps({ integrations, admin, onSetup }: {
 }) {
   const shown = integrations.filter((app) => admin || !PLATFORM_OWNER_APPS.has(app.id) || app.status === "connected");
   return (
-    <section id="apps" className="mt-5 scroll-mt-6 rounded-2xl border border-dash-line bg-[#EFF2EA] p-5">
+    <section id="apps" className="mt-5 scroll-mt-6 rounded-2xl border border-dash-line bg-[#EEF5EE] p-5">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="font-serif text-xl">Connected Apps</h2>
@@ -715,7 +715,7 @@ function ConnectedApps({ integrations, admin, onSetup }: {
         {shown.map((app) => (
           <div key={app.id} className="flex flex-col justify-between gap-3 rounded-xl border border-dash-line bg-white p-4">
             <div className="flex items-start gap-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#F6F2EA]">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#EEF5EE]">
                 {app.id === "ga4" ? (
                   <GaLogo className="h-5 w-5" />
                 ) : app.id === "gsc" ? (

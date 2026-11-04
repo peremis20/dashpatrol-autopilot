@@ -49,9 +49,9 @@ const FIELD_LABEL_SIMPLE: Record<ChangeField, string> = {
 const STATUS_STYLE: Record<AutopilotChange["status"], string> = {
   applied: "bg-dash-green/10 text-dash-green",
   kept: "bg-dash-up/10 text-dash-up",
-  reverted: "bg-[#F1ECE3] text-dash-muted",
+  reverted: "bg-[#E7F1E7] text-dash-muted",
   failed: "bg-dash-down/10 text-dash-down",
-  skipped: "bg-[#F1ECE3] text-dash-muted",
+  skipped: "bg-[#E7F1E7] text-dash-muted",
   suggested: "bg-[#FBF1E1] text-[#8A5A12]",
 };
 
@@ -139,7 +139,7 @@ export function Autopilot({ connected, admin, simple = false, autoPreview = fals
         {state && ready && (
           <span
             className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
-              state.settings.enabled ? "bg-dash-up/10 text-dash-up" : "bg-[#F1ECE3] text-dash-muted"
+              state.settings.enabled ? "bg-dash-up/10 text-dash-up" : "bg-[#E7F1E7] text-dash-muted"
             }`}
           >
             {state.settings.enabled ? "On" : "Off"}
@@ -456,9 +456,9 @@ function FixList({
             {f.field === "internal_link" && <p className="mb-2 text-dash-muted">Links to {pathOf(f.pageUrl)}, which the search above should find.</p>}
             {f.before && !html(f) && <p className="mb-1 text-dash-muted line-through">{f.before}</p>}
             {html(f) ? (
-              <pre className="max-h-48 overflow-auto whitespace-pre-wrap rounded-lg border border-dash-line bg-[#FBF8F2] p-3 font-mono text-xs">{f.after}</pre>
+              <pre className="max-h-48 overflow-auto whitespace-pre-wrap rounded-lg border border-dash-line bg-[#F7FAF6] p-3 font-mono text-xs">{f.after}</pre>
             ) : (
-              <p className="rounded-lg border border-dash-line bg-[#FBF8F2] p-3 text-dash-ink">{f.after}</p>
+              <p className="rounded-lg border border-dash-line bg-[#F7FAF6] p-3 text-dash-ink">{f.after}</p>
             )}
             <p className="mt-2 text-dash-muted">{fixGuide(platform, f.field)}</p>
             {f.reason && <p className="mt-1 text-xs text-dash-muted">Why: {f.reason}</p>}

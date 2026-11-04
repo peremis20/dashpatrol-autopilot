@@ -64,7 +64,7 @@ export function DeltaBadge({ delta, lowerIsBetter = false }: { delta: Delta; low
 }
 
 export function Skeleton({ className = "" }: { className?: string }) {
-  return <div className={`animate-pulse rounded-lg bg-[#EFE9DE] ${className}`} />;
+  return <div className={`animate-pulse rounded-lg bg-[#E7F1E7] ${className}`} />;
 }
 
 export function SourceError({ message, source }: { message?: string; source: string }) {

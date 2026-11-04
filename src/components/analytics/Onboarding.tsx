@@ -710,7 +710,7 @@ function PropertyHelp({
                 The Google account <b>{status.email}</b> can&apos;t see {status.domain} yet. Send this to whoever set up your Google
                 tools, then click Check again once they&apos;ve added you.
               </p>
-              <pre className="max-h-48 overflow-auto whitespace-pre-wrap rounded-lg border border-dash-line bg-[#FBF8F2] p-3 font-dash text-xs">
+              <pre className="max-h-48 overflow-auto whitespace-pre-wrap rounded-lg border border-dash-line bg-[#F7FAF6] p-3 font-dash text-xs">
                 {access.body}
               </pre>
               <div className="flex flex-wrap items-center gap-3">
