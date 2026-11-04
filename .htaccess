@@ -12,6 +12,9 @@ RewriteRule ^ https://dashpatrol.io%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# Sign in, sign up and password reset live in the app
+RewriteRule ^(sign-in|start-free-trial|forgot-password)\.html$ https://app.dashpatrol.io/ [L,R=302]
+
 # /index.html -> /
 RewriteRule ^index\.html$ / [L,R=301]
 
